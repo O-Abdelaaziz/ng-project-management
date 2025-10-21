@@ -1,9 +1,12 @@
 import { Component } from '@angular/core';
+import {ToolbarComponent} from '../../shared/layout/toolbar/toolbar.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [],
+  imports: [
+    ToolbarComponent
+  ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })

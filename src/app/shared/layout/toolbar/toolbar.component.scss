@@ -1,0 +1,33 @@
+mat-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .left-container, .avatar-container {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  img {
+    border-radius: 50%;
+    background-color: var(--mat-surface-color);
+    transition: all 250ms ease-in-out;
+    cursor: pointer;
+
+    &:hover {
+      cursor: pointer;
+      transform: translateY(-2px);
+    }
+  }
+
+  mat-icon {
+    cursor: pointer;
+    transition: all 250ms ease-in-out;
+
+    &:hover {
+      cursor: pointer;
+      transform: translateY(-2px);
+    }
+  }
+}

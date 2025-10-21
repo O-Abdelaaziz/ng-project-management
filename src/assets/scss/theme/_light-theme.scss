@@ -1,0 +1,16 @@
+@use '@angular/material' as mat;
+
+$application-light-theme: (
+  color: (
+    theme-type: light,
+    primary: mat.$azure-palette,
+    tertiary: mat.$blue-palette,
+  ),
+  typography: Roboto,
+  density: 0,
+);
+
+
+@mixin apply-light-theme {
+  @include mat.theme($application-light-theme);
+}

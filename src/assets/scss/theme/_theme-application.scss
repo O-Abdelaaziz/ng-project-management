@@ -1,0 +1,12 @@
+@use '@angular/material' as mat;
+@use 'light-theme' as light;
+@use 'dark-theme' as dark;
+
+html {
+  color-scheme: light dark;
+  @include mat.theme(light.$application-light-theme);
+}
+
+.dark-theme {
+  @include mat.theme(dark.$application-dark-theme);
+}

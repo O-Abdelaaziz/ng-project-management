@@ -1,19 +1,27 @@
 
-// Custom Theming for Angular Material
-// For more information: https://material.angular.dev/guide/theming
+@forward 'assets/scss/abstracts/variables';
+@forward 'assets/scss/abstracts/functions';
+@forward 'assets/scss/abstracts/mixins';
+
+// 2. Base Styles (Resets, general HTML elements)
+@use 'assets/scss/base/reset';
+@use 'assets/scss/base/base';
+@use 'assets/scss/base/typography';
+
+// 3. Theme (Angular Material setup/default theme)
 @use '@angular/material' as mat;
 
-html {
-  @include mat.theme((
-    color: (
-      theme-type: light,
-      primary: mat.$azure-palette,
-      tertiary: mat.$blue-palette,
-    ),
-    typography: Roboto,
-    density: 0,
-  ));
-}/* You can add global styles to this file, and also import other style files */
+@use 'assets/scss/theme/tokens';
+@use 'assets/scss/theme/light-theme' as app-theme; // Default theme
+@use 'assets/scss/theme/dark-theme'; // dark theme
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+// 4. Components (Standalone UI elements)
+@use 'assets/scss/components/button';
+@use 'assets/scss/components/card';
+@use 'assets/scss/components/modal';
+
+// 5. Utilities (Helpers, overrides, always LAST for highest specificity)
+@use 'assets/scss/utilities/helpers';
+@use 'assets/scss/utilities/responsive';
+@use 'assets/scss/theme/overrides';
+@use 'assets/scss/theme/theme-application';

@@ -1,0 +1,8 @@
+@use '@angular/material' as mat;
+
+:root {
+  @include mat.divider-overrides((
+    color: var(--mat-sys-outline-variant),
+  ));
+}
+

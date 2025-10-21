@@ -1,1 +1,39 @@
-<p>toolbar works!</p>
+<mat-toolbar>
+  <div class="left-container">
+    @if(_currentViewport() <= IS_MEDIUM){
+      <button mat-icon-button>
+        <mat-icon matTooltip="menu">menu</mat-icon>
+      </button>
+    }
+    <span>{{ APP_NAME }}</span>
+  </div>
+  <div class="avatar-container">
+    <button mat-icon-button>
+      <mat-icon matTooltip="Notifications">notifications</mat-icon>
+    </button>
+    <img ngSrc="assets/images/avatar.jpg" alt="avatar" width="32" height="32" matTooltip="User Profile"  [matMenuTriggerFor]="menu">
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item [matMenuTriggerFor]="themeMenu">
+        <mat-icon>dark_mode</mat-icon>
+        <span>Theme</span>
+      </button>
+      <mat-divider></mat-divider>
+
+      <button mat-menu-item>
+        <mat-icon>logout</mat-icon>
+        <span>Logout</span>
+      </button>
+    </mat-menu>
+    <mat-menu #themeMenu="matMenu">
+      <button mat-menu-item (click)="switchTheme(DEVICE_THEME)">
+        Appareil
+      </button>
+      <button mat-menu-item (click)="switchTheme(LIGHT_THEME)">
+        Claire
+      </button>
+      <button mat-menu-item (click)="switchTheme(DARK_THEME)">
+        Sombre
+      </button>
+    </mat-menu>
+  </div>
+</mat-toolbar>
