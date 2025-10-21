@@ -1,0 +1,32 @@
+<!--<nav aria-label="breadcrumb" *ngIf="breadcrumbs$ | async as breadcrumbs">-->
+<!--  <ol>-->
+<!--    <li *ngFor="let breadcrumb of breadcrumbs; let last = last">-->
+<!--      <ng-container *ngIf="!last; else lastCrumb">-->
+<!--        <a [routerLink]="breadcrumb.url">{{ breadcrumb.label }}</a>-->
+<!--        <span aria-hidden="true">&gt;</span>-->
+<!--      </ng-container>-->
+<!--      <ng-template #lastCrumb>-->
+<!--        <span aria-current="page">{{ breadcrumb.label }}</span>-->
+<!--      </ng-template>-->
+<!--    </li>-->
+<!--  </ol>-->
+<!--</nav>-->
+<nav aria-label="breadcrumb">
+  <ol class="mat-breadcrumb" *ngIf="breadcrumbs$ | async as breadcrumbs">
+    <li *ngFor="let breadcrumb of breadcrumbs; let last = last">
+      <ng-container *ngIf="!last; else lastCrumb">
+        <a mat-button [routerLink]="breadcrumb.url" class="breadcrumb-link">
+          {{ breadcrumb.label }}
+        </a>
+
+        <mat-icon class="breadcrumb-separator">chevron_right</mat-icon>
+      </ng-container>
+
+      <ng-template #lastCrumb>
+        <span class="mat-body-strong current-crumb" aria-current="page">
+          {{ breadcrumb.label }}
+        </span>
+      </ng-template>
+    </li>
+  </ol>
+</nav>

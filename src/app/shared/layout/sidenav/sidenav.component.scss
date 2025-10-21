@@ -1,0 +1,25 @@
+mat-drawer-container {
+  height: calc(100vh - 64px);
+  display: flex;
+  flex-direction: column;
+}
+
+mat-drawer {
+  width: 220px;
+  border-right: 1px solid var(--mat-sys-outline-variant);
+  border-radius: 0;
+
+  mat-list {
+    mat-list-item {
+      margin-bottom: 16px;
+    }
+  }
+}
+
+.active-link{
+  background: var(--mat-sys-outline-variant);
+}
+
+mat-drawer-content {
+  padding: 1rem;
+}

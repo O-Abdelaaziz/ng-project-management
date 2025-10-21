@@ -6,6 +6,8 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatListModule} from '@angular/material/list';
+import {MatTabsModule} from '@angular/material/tabs';
 
 const MaterialModules = [
   MatToolbarModule,
@@ -14,6 +16,9 @@ const MaterialModules = [
   MatTooltipModule,
   MatMenuModule,
   MatDividerModule,
+  MatSidenavModule,
+  MatListModule,
+  MatTabsModule,
 ]
 
 @NgModule({

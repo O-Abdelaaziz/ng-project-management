@@ -1,0 +1,50 @@
+<mat-drawer-container autosize>
+  <mat-drawer [mode]="_currentViewport() >= isMedium ? 'side' : 'over'"
+              [opened]="_currentViewport() >= isMedium || isToggleDrawer()">
+
+    <mat-nav-list>
+      <a mat-menu-item routerLink="projects" routerLinkActive="active-link" (click)="toggleDrawer()">
+        <mat-icon matListItemIcon>home</mat-icon>
+        <span matListItemTitle>Home</span>
+      </a>
+      <a mat-menu-item routerLink="projects" routerLinkActive="active-link" (click)="toggleDrawer()">
+        <mat-icon matListItemIcon>dataset</mat-icon>
+        <span matListItemTitle>Projects</span>
+      </a>
+      <a mat-menu-item routerLink="contributors" routerLinkActive="active-link" (click)="toggleDrawer()">
+        <mat-icon matListItemIcon>people</mat-icon>
+        <span matListItemTitle>Contributors</span>
+      </a>
+      <a mat-menu-item>
+        <mat-icon matListItemIcon>archive</mat-icon>
+        <span matListItemTitle>Archived</span>
+      </a>
+      <a mat-menu-item>
+        <mat-icon matListItemIcon>delete</mat-icon>
+        <span matListItemTitle>Trash</span>
+      </a>
+      <a mat-menu-item>
+        <mat-icon matListItemIcon>explore</mat-icon>
+        <span matListItemTitle>Explore</span>
+      </a>
+      <a mat-menu-item>
+        <mat-icon matListItemIcon>flag</mat-icon>
+        <span matListItemTitle>Report</span>
+      </a>
+      <a mat-menu-item>
+        <mat-icon matListItemIcon>support</mat-icon>
+        <span matListItemTitle>Help</span>
+      </a>
+      <a mat-menu-item>
+        <mat-icon matListItemIcon>feedback</mat-icon>
+        <span matListItemTitle>Feedback</span>
+      </a>
+    </mat-nav-list>
+
+  </mat-drawer>
+
+  <mat-drawer-content>
+    <router-outlet></router-outlet>
+  </mat-drawer-content>
+
+</mat-drawer-container>

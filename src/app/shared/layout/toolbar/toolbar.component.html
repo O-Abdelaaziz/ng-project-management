@@ -1,7 +1,7 @@
 <mat-toolbar>
   <div class="left-container">
     @if(_currentViewport() <= IS_MEDIUM){
-      <button mat-icon-button>
+      <button mat-icon-button (click)="toggleDrawer()">
         <mat-icon matTooltip="menu">menu</mat-icon>
       </button>
     }
@@ -26,14 +26,15 @@
     </mat-menu>
     <mat-menu #themeMenu="matMenu">
       <button mat-menu-item (click)="switchTheme(DEVICE_THEME)">
-        Appareil
+        System
       </button>
       <button mat-menu-item (click)="switchTheme(LIGHT_THEME)">
-        Claire
+        Light
       </button>
       <button mat-menu-item (click)="switchTheme(DARK_THEME)">
-        Sombre
+        Dark
       </button>
     </mat-menu>
   </div>
 </mat-toolbar>
+<mat-divider></mat-divider>

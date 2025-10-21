@@ -1,1 +1,13 @@
-<p>contributors works!</p>
+<app-page-header></app-page-header>
+<nav mat-tab-nav-bar mat-stretch-tabs="false" [tabPanel]="tabPanel">
+  @for (link of links; track link) {
+    <a mat-tab-link
+       (click)="activeLink = link.url"
+       [active]="activeLink == link.url"
+        [routerLink]="link.url"> {{link.name}} </a>
+  }
+</nav>
+<mat-tab-nav-panel #tabPanel>
+
+<router-outlet></router-outlet>
+</mat-tab-nav-panel>

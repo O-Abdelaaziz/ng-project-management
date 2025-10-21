@@ -4,10 +4,11 @@ import {APP_NAME} from './core/constants/app.constant';
 export const routes: Routes = [
   {
     path: 'login',
-    title: `Connexion - ${APP_NAME}`,
+    title: `Login - ${APP_NAME}`,
     loadComponent: () => import('./pages/login/login.component').then((m) => m.LoginComponent),
     data: {
-      title: `Connexion - ${APP_NAME}`,
+      breadcrumb: 'Login',
+      title: `Login - ${APP_NAME}`,
       description: 'A project management application login page',
       keywords: ['login', 'login page', 'ng-project-management', 'project management', 'angular'],
       canonicalPath: '/login',
@@ -24,6 +25,7 @@ export const routes: Routes = [
         title: `Projects - ${APP_NAME}`,
         loadComponent: () => import('./pages/projects/projects.component').then((m) => m.ProjectsComponent),
         data: {
+          breadcrumb: 'Projects',
           title: `Projects - ${APP_NAME}`,
           description: 'A project management application projects page',
           keywords: ['projects', 'projects page', 'ng-project-management', 'project management', 'angular'],
@@ -41,6 +43,7 @@ export const routes: Routes = [
             title: `Active - ${APP_NAME}`,
             loadComponent: () => import('./shared/components/active/active.component').then((m) => m.ActiveComponent),
             data: {
+              breadcrumb: 'Active',
               title: `Active - ${APP_NAME}`,
               description: 'A project management application active contributors page',
               keywords: ['active', 'active page', 'ng-project-management', 'project management', 'angular'],
@@ -53,6 +56,7 @@ export const routes: Routes = [
             title: `Archived - ${APP_NAME}`,
             loadComponent: () => import('./shared/components/archived/archived.component').then((m) => m.ArchivedComponent),
             data: {
+              breadcrumb: 'Archived',
               title: `Archived - ${APP_NAME}`,
               description: 'A project management application archived contributors page',
               keywords: ['archived', 'archived page', 'ng-project-management', 'project management', 'angular'],
@@ -67,6 +71,7 @@ export const routes: Routes = [
           },
         ],
         data: {
+          breadcrumb: 'Contributors',
           title: `Contributors - ${APP_NAME}`,
           description: 'A project management application contributors page',
           keywords: ['contributors', 'contributors page', 'ng-project-management', 'project management', 'angular'],
@@ -81,6 +86,7 @@ export const routes: Routes = [
       },
     ],
     data: {
+      breadcrumb: 'Home',
       title: `Home - ${APP_NAME}`,
       description: 'A project management application home page',
       keywords: ['home', 'home page', 'ng-project-management', 'project management', 'angular'],
@@ -93,6 +99,7 @@ export const routes: Routes = [
     title: `Project - ${APP_NAME}`,
     loadComponent: () => import('./pages/project/project.component').then((m) => m.ProjectComponent),
     data: {
+      breadcrumb: 'Project',
       title: `Project - ${APP_NAME}`,
       description: 'A project management application project page',
       keywords: ['project', 'project page', 'ng-project-management', 'project management', 'angular'],
