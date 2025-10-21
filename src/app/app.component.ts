@@ -11,10 +11,9 @@ import {RouterOutlet} from '@angular/router';
 export class AppComponent {
   title = 'ng-projects-management';
 
-  private readonly appName = import.meta.env.NG_APP_NAME;
+  private readonly firebaseApiKey = import.meta.env.NG_APP_FIREBASE_API_KEY;
 
   constructor() {
-    this.title = this.appName;
-    console.log(this.appName)
+    console.log(this.firebaseApiKey)
   }
 }

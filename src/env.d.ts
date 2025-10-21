@@ -4,6 +4,12 @@ declare interface Env {
   // Replace the following with your own environment variables.
   // Example: NGX_VERSION: string;
   readonly NG_APP_NAME: string;
+  readonly NG_APP_FIREBASE_API_KEY: string;
+  readonly NG_APP_FIREBASE_AUTH_DOMAIN: string;
+  readonly NG_APP_FIREBASE_PROJECT_ID: string;
+  readonly NG_APP_FIREBASE_STORAGE_BUCKET: string;
+  readonly NG_APP_FIREBASE_MESSAGING_SENDER_ID: string;
+  readonly NG_APP_FIREBASE_APP_ID: string;
   [key: string]: any;
 }
 
