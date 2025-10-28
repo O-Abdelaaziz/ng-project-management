@@ -8,6 +8,10 @@ import {MatDividerModule} from '@angular/material/divider';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatListModule} from '@angular/material/list';
 import {MatTabsModule} from '@angular/material/tabs';
+import {MatCardModule} from '@angular/material/card';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 const MaterialModules = [
   MatToolbarModule,
@@ -19,6 +23,10 @@ const MaterialModules = [
   MatSidenavModule,
   MatListModule,
   MatTabsModule,
+  MatCardModule,
+  MatFormFieldModule,
+  MatInputModule,
+  MatCheckboxModule,
 ]
 
 @NgModule({

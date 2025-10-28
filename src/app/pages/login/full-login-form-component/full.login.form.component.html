@@ -1,0 +1,41 @@
+<form #emailForm="ngForm" (ngSubmit)="formSubmit.emit(emailForm)" class="full-login-form">
+  @if (loading()) {
+    <app-skeleton></app-skeleton>
+  } @else {
+    <div class="card-header">
+      <h4>Sign in</h4>
+      <p>Please log in to your account</p>
+    </div>
+    <mat-form-field appearance="outline">
+      <mat-label>Enter Email</mat-label>
+      <input matInput
+             ngModel
+             type="email"
+             id="email"
+             name="email"
+             required
+             email
+             placeholder="Ex: example@company.org"
+             autocomplete="email"
+      >
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Enter your password</mat-label>
+      <input matInput [type]="hidePassword ? 'password' : 'text'">
+      <button mat-icon-button matSuffix (click)="passwordToggle.emit()"
+              [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidePassword">
+        <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+      </button>
+    </mat-form-field>
+
+    <div class="remember-forgot-links">
+      <mat-checkbox class="example-margin">Remember Me</mat-checkbox>
+      <a style="cursor: pointer; color: #1414f8;" routerLink="../forgot-password">Forgot Password?</a>
+    </div>
+
+    <button mat-flat-button color="primary" class="submit-button">Login</button>
+
+    <p class="back-link" (click)="backToPrompt.emit(false)">← Use social login or different email</p>
+  }
+</form>

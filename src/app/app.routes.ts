@@ -1,12 +1,18 @@
 import {Routes} from '@angular/router';
 import {APP_NAME} from './core/constants/app.constant';
+import {AuthGuard, canActivate, redirectLoggedInTo, redirectUnauthorizedTo} from '@angular/fire/auth-guard';
+
+const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
+const redirectLoggedInToHome = () => redirectLoggedInTo(['']);
 
 export const routes: Routes = [
   {
     path: 'login',
     title: `Login - ${APP_NAME}`,
     loadComponent: () => import('./pages/login/login.component').then((m) => m.LoginComponent),
+    canActivate: [AuthGuard],
     data: {
+      authGuardPipe: redirectLoggedInToHome,
       breadcrumb: 'Login',
       title: `Login - ${APP_NAME}`,
       description: 'A project management application login page',
@@ -15,10 +21,21 @@ export const routes: Routes = [
       schema: 'webpage'
     }
   },
+
   {
     path: '',
     title: `Home - ${APP_NAME}`,
     loadComponent: () => import('./pages/home/home.component').then((m) => m.HomeComponent),
+    canActivate: [AuthGuard],
+    data: {
+      authGuardPipe: redirectUnauthorizedToLogin,
+      breadcrumb: 'Home',
+      title: `Home - ${APP_NAME}`,
+      description: 'A project management application home page',
+      keywords: ['home', 'home page', 'ng-project-management', 'project management', 'angular'],
+      canonicalPath: '/',
+      schema: 'webpage'
+    },
     children: [
       {
         path: 'projects',
@@ -37,6 +54,14 @@ export const routes: Routes = [
         path: 'contributors',
         title: `Contributors - ${APP_NAME}`,
         loadComponent: () => import('./pages/contributors/contributors.component').then((m) => m.ContributorsComponent),
+        data: {
+          breadcrumb: 'Contributors',
+          title: `Contributors - ${APP_NAME}`,
+          description: 'A project management application contributors page',
+          keywords: ['contributors', 'contributors page', 'ng-project-management', 'project management', 'angular'],
+          canonicalPath: '/contributors',
+          schema: 'webpage'
+        },
         children: [
           {
             path: 'active',
@@ -69,15 +94,7 @@ export const routes: Routes = [
             redirectTo: 'active',
             pathMatch: 'full',
           },
-        ],
-        data: {
-          breadcrumb: 'Contributors',
-          title: `Contributors - ${APP_NAME}`,
-          description: 'A project management application contributors page',
-          keywords: ['contributors', 'contributors page', 'ng-project-management', 'project management', 'angular'],
-          canonicalPath: '/contributors',
-          schema: 'webpage'
-        }
+        ]
       },
       {
         path: '',
@@ -85,20 +102,14 @@ export const routes: Routes = [
         pathMatch: 'full',
       },
     ],
-    data: {
-      breadcrumb: 'Home',
-      title: `Home - ${APP_NAME}`,
-      description: 'A project management application home page',
-      keywords: ['home', 'home page', 'ng-project-management', 'project management', 'angular'],
-      canonicalPath: '/',
-      schema: 'webpage'
-    }
   },
   {
     path: 'project/:id',
     title: `Project - ${APP_NAME}`,
     loadComponent: () => import('./pages/project/project.component').then((m) => m.ProjectComponent),
+    canActivate: [AuthGuard],
     data: {
+      authGuardPipe: redirectUnauthorizedToLogin,
       breadcrumb: 'Project',
       title: `Project - ${APP_NAME}`,
       description: 'A project management application project page',
@@ -117,3 +128,73 @@ export const routes: Routes = [
     redirectTo: '',
   },
 ];
+
+
+// const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
+// const redirectLoggedInToHome = () => redirectLoggedInTo(['']);
+//
+// export const routes: Routes = [
+//   {
+//     path: 'login',
+//     title: `Login - ${APP_NAME}`,
+//     loadComponent: () => import('./pages/login/login.component').then(l=>l.LoginComponent),
+//     ...canActivate(redirectLoggedInToHome),
+//   },
+//   {
+//     path: '',
+//     loadComponent: () => import('./pages/home/home.component').then(h=>h.HomeComponent),
+//     ...canActivate(redirectUnauthorizedToLogin),
+//     children: [
+//       {
+//         path: 'projects',
+//         title: `Projets - ${APP_NAME}`,
+//         loadComponent: () => import('./pages/project/project.component').then(p=>p.ProjectComponent),
+//       },
+//       {
+//         path: 'contributors',
+//         title: `Contributeurs - ${APP_NAME}`,
+//         loadComponent: () =>
+//           import('./pages/contributors/contributors.component').then(c=>c.ContributorsComponent),
+//         children: [
+//           {
+//             path: 'active',
+//             title: `Contributeurs actifs - ${APP_NAME}`,
+//             loadComponent: () =>
+//               import('./shared/components/active/active.component').then(a=>a.ActiveComponent),
+//           },
+//           {
+//             path: 'achived',
+//             title: `Contributeurs archivés - ${APP_NAME}`,
+//             loadComponent: () =>
+//               import('./shared/components/archived/archived.component').then(a=>a.ArchivedComponent),
+//           },
+//           {
+//             path: '',
+//             redirectTo: 'active',
+//             pathMatch: 'full',
+//           },
+//         ],
+//       },
+//       {
+//         path: '',
+//         redirectTo: 'projects',
+//         pathMatch: 'full',
+//       },
+//     ],
+//   },
+//   {
+//     path: 'project/:id',
+//     title: `Chargement du projet... - ${APP_NAME}`,
+//     loadComponent: () => import('./pages/project/project.component').then(p=>p.ProjectComponent),
+//     ...canActivate(redirectUnauthorizedToLogin),
+//   },
+//   {
+//     path: '',
+//     redirectTo: 'projects',
+//     pathMatch: 'full',
+//   },
+//   {
+//     path: '**',
+//     redirectTo: '',
+//   },
+// ];

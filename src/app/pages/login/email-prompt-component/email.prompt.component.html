@@ -1,0 +1,41 @@
+<div class="email-login-prompt">
+  <!--  <p class="prompt-text">Start by entering your email address.</p>-->
+  <div class="card-header">
+    <h4>Sign in</h4>
+    <p>Please log in to your account</p>
+  </div>
+  <form #emailPromptForm="ngForm" (ngSubmit)="emailPromptSubmit.emit(emailPromptForm)" class="prompt-form">
+    @if (emailSent()) {
+      <span style="width: 500px; display: block; margin-top: 1rem">
+      An email has been sent to {{ emailSent() }}
+        <button
+          mat-button
+          color="primary"
+          style="text-decoration: underline"
+          (click)="resetState.emit()"
+        >
+        Email not received?
+      </button>
+        </span>
+    } @else {
+      <mat-form-field appearance="outline">
+        <mat-label>Enter Email</mat-label>
+        <input matInput
+               ngModel
+               type="email"
+               name="email"
+               required
+               email
+               placeholder="Ex: example@company.org">
+      </mat-form-field>
+      <button mat-flat-button color="primary" type="submit" class="continue-button"
+              [disabled]="emailPromptForm.invalid">Continue with Email
+      </button>
+    }
+  </form>
+  <!--  <div class="sign-up">-->
+  <!--    <p>Don't have an account yet?-->
+  <!--      <a routerLink="./register" style="cursor: pointer; color: #1414f8;">Sign up here</a></p>-->
+  <!--  </div>-->
+  <p class="back-link" (click)="showFullFormChange.emit(true)">← Use social login or different email</p>
+</div>

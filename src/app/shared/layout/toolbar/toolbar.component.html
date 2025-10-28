@@ -1,6 +1,6 @@
 <mat-toolbar>
   <div class="left-container">
-    @if(_currentViewport() <= IS_MEDIUM){
+    @if (_currentViewport() <= IS_MEDIUM) {
       <button mat-icon-button (click)="toggleDrawer()">
         <mat-icon matTooltip="menu">menu</mat-icon>
       </button>
@@ -11,7 +11,8 @@
     <button mat-icon-button>
       <mat-icon matTooltip="Notifications">notifications</mat-icon>
     </button>
-    <img ngSrc="assets/images/avatar.jpg" alt="avatar" width="32" height="32" matTooltip="User Profile"  [matMenuTriggerFor]="menu">
+    <img [ngSrc]="(user$ | async)?.photoURL ?? 'assets/images/avatar.jpg'" alt="avatar" width="32" height="32"
+         matTooltip="User Profile" [matMenuTriggerFor]="menu" NgOptimizedImage>
     <mat-menu #menu="matMenu">
       <button mat-menu-item [matMenuTriggerFor]="themeMenu">
         <mat-icon>dark_mode</mat-icon>
@@ -19,7 +20,7 @@
       </button>
       <mat-divider></mat-divider>
 
-      <button mat-menu-item>
+      <button mat-menu-item (click)="logOut()">
         <mat-icon>logout</mat-icon>
         <span>Logout</span>
       </button>

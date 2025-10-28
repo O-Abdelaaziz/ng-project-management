@@ -1,0 +1,112 @@
+//.skeleton-shapes{
+//  height: 40px;
+//  width: 100%;
+//}
+//
+//.skeleton-button {
+//  height: 40px;
+//  width: 100px;
+//  place-self: end;
+//}
+//
+//
+///* Skeleton elements */
+//.skeleton {
+//  background: linear-gradient(
+//      90deg,
+//      var(--mat-sys-outline-variant) 25%,
+//      var(--mat-sys-outline-variant) 50%,
+//      var(--mat-sys-outline-variant) 75%
+//  );
+//  background-size: 200% 100%;
+//  animation: pulse 1.5s infinite;
+//  border-radius: 8px;
+//}
+//
+///* Pulse animation for skelton loading */
+//@keyframes pulse {
+//  0% {
+//    background-position: 200% 0;
+//    filter: brightness(1);
+//  }
+//  50% {
+//    background-position: 0% 0;
+//    filter: brightness(1.3); /* Intensify the brightness at the peak */
+//  }
+//  100% {
+//    background-position: -200% 0;
+//    filter: brightness(1);
+//  }
+//}
+
+// Define Skeleton Colors
+$skeleton-color-light: #f0f0f0;
+$skeleton-color-dark: #e0e0e0;
+
+// Keyframes for the simple pulse animation
+@keyframes skeleton-pulse {
+  0% {
+    background-color: $skeleton-color-light;
+  }
+  50% {
+    background-color: $skeleton-color-dark;
+  }
+  100% {
+    background-color: $skeleton-color-light;
+  }
+}
+
+// ----------------------------------------------------
+// SKELETON STYLES
+// ----------------------------------------------------
+
+.skeleton-content {
+  display: grid;
+  gap: 1.5rem; // General spacing
+  padding: 3rem; // Matches mat-card-content padding
+}
+
+.skeleton-line,
+.skeleton-circle {
+  background-color: $skeleton-color-light;
+  animation: skeleton-pulse 1.5s infinite ease-in-out;
+  border-radius: 4px; // Matches Angular Material field shape
+}
+
+.skeleton-line {
+  height: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+// Header Layout (Mimics card-header)
+.skeleton-header {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+
+  // Circle placeholder for the image
+  .skeleton-line:first-child {
+    margin-bottom: 1.5rem;
+  }
+}
+
+// Form Fields Layout (Mimics .form display: grid)
+.skeleton-form-fields {
+  display: grid;
+  gap: 1rem;
+}
+
+// Footer/Button Layout (Mimics the area below form fields)
+.skeleton-footer {
+  // Line for "Remember Me"
+  > .skeleton-line:first-child {
+    height: 0.75rem;
+    margin-bottom: 0;
+  }
+  // Line for the submit button
+  > .skeleton-line:last-child {
+    border-radius: 15px; // Matches your submit button shape
+  }
+}

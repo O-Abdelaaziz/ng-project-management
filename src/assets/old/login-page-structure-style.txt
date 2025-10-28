@@ -1,0 +1,445 @@
+<!--&lt;!&ndash;<main class="login-bg"&ndash;&gt;-->
+<!--&lt;!&ndash;     style="background-image: url(assets/images/login-bg.png);">&ndash;&gt;-->
+<!--&lt;!&ndash;  <div class="auth-box">&ndash;&gt;-->
+<!--&lt;!&ndash;    <mat-card class="card">&ndash;&gt;-->
+<!--&lt;!&ndash;      <mat-card-content>&ndash;&gt;-->
+<!--&lt;!&ndash;        <div class="card-header">&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;          <img src="assets/images/login.png" width="55" alt="">&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;          <h4>Sign in</h4>&ndash;&gt;-->
+<!--&lt;!&ndash;          <p>Please log in to your account</p>&ndash;&gt;-->
+<!--&lt;!&ndash;        </div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;        <form #emailForm="ngForm" (ngSubmit)="emailFormSubmit(emailForm)" class="form">&ndash;&gt;-->
+<!--&lt;!&ndash;          <div>&ndash;&gt;-->
+<!--&lt;!&ndash;            <mat-form-field appearance="outline">&ndash;&gt;-->
+<!--&lt;!&ndash;              <mat-label>Enter Email</mat-label>&ndash;&gt;-->
+<!--&lt;!&ndash;              <input matInput&ndash;&gt;-->
+<!--&lt;!&ndash;                     ngModel&ndash;&gt;-->
+<!--&lt;!&ndash;                     #email="ngModel"&ndash;&gt;-->
+<!--&lt;!&ndash;                     type="email"&ndash;&gt;-->
+<!--&lt;!&ndash;                     id="email"&ndash;&gt;-->
+<!--&lt;!&ndash;                     name="email"&ndash;&gt;-->
+<!--&lt;!&ndash;                     required&ndash;&gt;-->
+<!--&lt;!&ndash;                     email&ndash;&gt;-->
+<!--&lt;!&ndash;                     placeholder="Ex: example@company.org"&ndash;&gt;-->
+<!--&lt;!&ndash;                     style="width: 100%;"&ndash;&gt;-->
+<!--&lt;!&ndash;                    >&ndash;&gt;-->
+<!--&lt;!&ndash;              @if (!email.errors?.['required'] && email.errors?.['email']) {&ndash;&gt;-->
+<!--&lt;!&ndash;                <mat-error> Email invalide</mat-error>&ndash;&gt;-->
+<!--&lt;!&ndash;              }&ndash;&gt;-->
+<!--&lt;!&ndash;              @if (email.errors?.['required']) {&ndash;&gt;-->
+<!--&lt;!&ndash;                <mat-error> Email est requis</mat-error>&ndash;&gt;-->
+<!--&lt;!&ndash;              }&ndash;&gt;-->
+<!--&lt;!&ndash;            </mat-form-field>&ndash;&gt;-->
+<!--&lt;!&ndash;          </div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;          <div>&ndash;&gt;-->
+<!--&lt;!&ndash;            <mat-form-field appearance="outline">&ndash;&gt;-->
+<!--&lt;!&ndash;              <mat-label>Enter your password</mat-label>&ndash;&gt;-->
+<!--&lt;!&ndash;              <input matInput [type]="hide() ? 'password' : 'text'">&ndash;&gt;-->
+<!--&lt;!&ndash;              <button mat-icon-button matSuffix (click)="hide.set(!hide())"&ndash;&gt;-->
+<!--&lt;!&ndash;                      [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide()">&ndash;&gt;-->
+<!--&lt;!&ndash;                <mat-icon>{{ hide() ? 'visibility_off' : 'visibility' }}</mat-icon>&ndash;&gt;-->
+<!--&lt;!&ndash;              </button>&ndash;&gt;-->
+<!--&lt;!&ndash;            </mat-form-field>&ndash;&gt;-->
+<!--&lt;!&ndash;          </div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;          <div class="remember-forgot-links">&ndash;&gt;-->
+<!--&lt;!&ndash;            <mat-checkbox class="example-margin">Remember Me</mat-checkbox>&ndash;&gt;-->
+<!--&lt;!&ndash;            <a style="cursor: pointer; color: #1414f8;" routerLink="../forgot-password">Forgot&ndash;&gt;-->
+<!--&lt;!&ndash;              Password?</a>&ndash;&gt;-->
+<!--&lt;!&ndash;          </div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;          <div class="button-grid">&ndash;&gt;-->
+<!--&lt;!&ndash;            <button mat-flat-button color="primary">Login</button>&ndash;&gt;-->
+<!--&lt;!&ndash;          </div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;          <div class="sign-up">&ndash;&gt;-->
+<!--&lt;!&ndash;            <p>Don't have an account yet?&ndash;&gt;-->
+<!--&lt;!&ndash;              <a routerLink="../sign-up" style="cursor: pointer; color: #1414f8;">Sign up here</a></p>&ndash;&gt;-->
+<!--&lt;!&ndash;          </div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;          <div class="login-separator">&ndash;&gt;-->
+<!--&lt;!&ndash;            <span>OR SIGN IN WITH</span>&ndash;&gt;-->
+<!--&lt;!&ndash;            <hr>&ndash;&gt;-->
+<!--&lt;!&ndash;          </div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;          <div class="social-login">&ndash;&gt;-->
+<!--&lt;!&ndash;            <button mat-mini-fab class="bg-facebook">&ndash;&gt;-->
+<!--&lt;!&ndash;              <mat-icon><i class='bxl  bx-facebook'></i></mat-icon>&ndash;&gt;-->
+<!--&lt;!&ndash;            </button>&ndash;&gt;-->
+<!--&lt;!&ndash;            <button mat-mini-fab class="bg-twitter">&ndash;&gt;-->
+<!--&lt;!&ndash;              <mat-icon><i class='bxl bx-twitter'></i></mat-icon>&ndash;&gt;-->
+<!--&lt;!&ndash;            </button>&ndash;&gt;-->
+<!--&lt;!&ndash;            <button mat-mini-fab class="bg-linkedin">&ndash;&gt;-->
+<!--&lt;!&ndash;              <mat-icon><i class='bxl bx-linkedin-square'></i></mat-icon>&ndash;&gt;-->
+<!--&lt;!&ndash;            </button>&ndash;&gt;-->
+<!--&lt;!&ndash;            <button mat-mini-fab class="bg-google">&ndash;&gt;-->
+<!--&lt;!&ndash;              <mat-icon (click)="loginWithGoogle()"><i class='bxl bx-google'></i></mat-icon>&ndash;&gt;-->
+<!--&lt;!&ndash;            </button>&ndash;&gt;-->
+<!--&lt;!&ndash;          </div>&ndash;&gt;-->
+<!--&lt;!&ndash;        </form>&ndash;&gt;-->
+<!--&lt;!&ndash;      </mat-card-content>&ndash;&gt;-->
+<!--&lt;!&ndash;    </mat-card>&ndash;&gt;-->
+<!--&lt;!&ndash;  </div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;</main>&ndash;&gt;-->
+
+
+<!--<div class="login-bg"-->
+<!--     style="background-image: url(assets/images/login-bg.png);">-->
+<!--</div>-->
+
+<!--<main class="auth-main-content">-->
+<!--  <mat-card class="auth-card">-->
+<!--    <mat-card-content class="card-content-wrapper">-->
+<!--      <form class="login-form">-->
+<!--        <div class="card-header">-->
+<!--          <img src="assets/images/login.png"-->
+<!--               width="155" alt="Angular Icon">-->
+<!--          <h4>Sign in</h4>-->
+<!--          <p>Please log in to your account</p>-->
+<!--        </div>-->
+
+<!--        <mat-form-field appearance="outline">-->
+<!--          <mat-label>Enter Email</mat-label>-->
+<!--          <input matInput placeholder="Ex. xyz@.com">-->
+<!--        </mat-form-field>-->
+
+<!--        <mat-form-field appearance="outline">-->
+<!--          <mat-label>Enter your password</mat-label>-->
+<!--          <input matInput [type]="hide() ? 'password' : 'text'">-->
+<!--          <button mat-icon-button matSuffix (click)="hide.set(!hide())"-->
+<!--                  [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide()">-->
+<!--            <mat-icon>{{hide() ? 'visibility_off' : 'visibility'}}</mat-icon>-->
+<!--          </button>-->
+<!--        </mat-form-field>-->
+
+<!--        <div class="remember-forgot-links">-->
+<!--          <mat-checkbox class="example-margin">Remember Me</mat-checkbox>-->
+<!--          <a style="cursor: pointer; color: #1414f8;" routerLink="../forgot-password">Forgot-->
+<!--            Password?</a>-->
+<!--        </div>-->
+
+<!--        <button mat-flat-button color="primary" class="submit-button">Login</button>-->
+<!--      </form>-->
+
+<!--      <div class="signup-link">-->
+<!--        <p>Don't have an account yet? <a routerLink="../sign-up"-->
+<!--                                         style="cursor: pointer; color: #1414f8;">Sign up here</a></p>-->
+<!--      </div>-->
+
+<!--      <div class="login-separator"> <span>OR SIGN IN WITH</span>-->
+<!--        <hr>-->
+<!--      </div>-->
+
+<!--      <div class="social-login">-->
+<!--        <button mat-mini-fab class="bg-facebook">-->
+<!--          <mat-icon><i class='bx bxl-facebook-circle'></i></mat-icon>-->
+<!--        </button>-->
+<!--        <button mat-mini-fab class="bg-twitter">-->
+<!--          <mat-icon><i class='bx bxl-twitter'></i></mat-icon>-->
+<!--        </button>-->
+<!--        <button mat-mini-fab class="bg-linkedin">-->
+<!--          <mat-icon><i class='bx bxl-linkedin-square'></i></mat-icon>-->
+<!--        </button>-->
+<!--        <button mat-mini-fab class="bg-google">-->
+<!--          <mat-icon><i class='bx bxl-google'></i></mat-icon>-->
+<!--        </button>-->
+<!--      </div>-->
+<!--    </mat-card-content>-->
+<!--  </mat-card>-->
+<!--</main>-->
+
+
+//@use "@angular/material" as mat;
+//
+//.login-bg {
+//  //position: fixed;
+//  //top: 0;
+//  //left: 0;
+//  //right: 0;
+//  //bottom: 0;
+//  //z-index: -1;
+//
+//  background-attachment: fixed;
+//  background-size: cover;
+//  background-repeat: no-repeat;
+//  height: 100vh;
+//}
+//
+//.auth-box {
+//  display: flex;
+//  justify-content: center;
+//  align-items: center;
+//  height: 100vh;
+//  padding: 2rem 1rem;
+//
+//  @media (min-width: 992px) {
+//    padding-top: 0;
+//    padding-bottom: 0;
+//  }
+//
+//  .card {
+//    width: 100%;
+//    max-width: 400px;
+//    margin: 0;
+//    padding: 1rem ;
+//    @media (min-width: 992px) {
+//      max-width: 500px;
+//    }
+//    @media (min-width: 1200px) {
+//      max-width: 600px;
+//    }
+//
+//    mat-card-content {
+//      padding: 3rem;
+//
+//      @media (max-width: 600px) {
+//        padding: 0;
+//      }
+//
+//      .card-header {
+//        text-align: center;
+//
+//        img {
+//          width: 95px;
+//          margin-bottom: 0;
+//
+//        }
+//
+//        h4 {
+//          margin-bottom: 0;
+//          font-size: 1.5rem;
+//          font-weight: 500;
+//          line-height: 1.2;
+//        }
+//
+//        p {
+//          margin-bottom: 0.75rem;
+//          font-size: 0.875rem;
+//          line-height: 1.2;
+//          color: var(--mat-sys-on-surface, rgba(0, 0, 0, 0.54));
+//        }
+//      }
+//
+//      .form mat-form-field {
+//        margin-bottom: 1rem;
+//        width: 100%;
+//      }
+//
+//      .remember-forgot-links {
+//        display: flex;
+//        justify-content: space-between;
+//        align-items: center;
+//        margin-bottom: 1rem;
+//
+//        @media (max-width: 600px) {
+//          //flex-direction: column;
+//          //align-items: center;
+//        }
+//
+//        a {
+//          cursor: pointer;
+//          color: #1414f8;
+//          text-decoration: none;
+//        }
+//      }
+//
+//      .button-grid {
+//        display: grid;
+//
+//        @include mat.button-overrides((
+//          filled-container-shape: 15px
+//        ));
+//      }
+//
+//      .sign-up {
+//        text-align: center;
+//
+//        a {
+//          cursor: pointer;
+//          color: #1414f8;
+//          text-decoration: none;
+//        }
+//      }
+//
+//      .login-separator {
+//        text-align: center;
+//        margin-bottom: 20px;
+//
+//        span {
+//          position: relative;
+//          top: 15px;
+//          margin-top: -10px;
+//          background-color: var(--mat-sys-surface-container-low, white);
+//          padding: 5px;
+//          font-size: 13px;
+//          color: #949494;
+//          z-index: 1;
+//        }
+//      }
+//
+//      .social-login {
+//        display: flex;
+//        align-items: center;
+//        justify-content: center;
+//        gap: 1rem; // Replaces gap-3
+//      }
+//
+//    }
+//  }
+//
+//}
+
+
+// Custom spacing variables
+$spacing-1: 0.25rem;
+$spacing-2: 0.5rem;   // ~ m-2
+$spacing-3: 1rem;     // Standard gap/margin
+$spacing-4: 1.5rem;
+$spacing-5: 3rem;     // ~ p-5
+
+// 1. Full viewport background (Original request conversion)
+.login-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+// 2. Main Auth Box Layout (Replacing d-flex, align-items-center, justify-content-center, my-5/my-lg-0)
+.auth-main-content {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: $spacing-5 $spacing-3; // Responsive padding for flow
+
+  @media (min-width: 992px) {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  .auth-card {
+    // Widths simulating Bootstrap's column sizes
+    width: 100%;
+    max-width: 400px;
+
+    @media (min-width: 992px) {
+      max-width: 500px;
+    }
+    @media (min-width: 1200px) {
+      max-width: 450px;
+    }
+
+    // Overrides default Angular Material padding/margin
+    margin: 0 !important;
+
+    .card-content-wrapper {
+      padding: $spacing-5 !important; // Replaces p-5
+    }
+  }
+}
+
+// 3. Form and Layout
+.login-form {
+  // Uses Grid for consistent vertical spacing (replaces row g-3)
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $spacing-3; // Replaces g-3
+
+  .card-header {
+    text-align: center; // Replaces text-center
+    margin-bottom: $spacing-1; // Extra spacing before the form fields start
+
+    img {
+      margin-bottom: $spacing-3; // Replaces mb-3
+    }
+    h4 {
+      margin-bottom: $spacing-2; // Replaces mb-2
+    }
+    p {
+      margin-bottom: $spacing-4; // Replaces mb-4
+    }
+  }
+
+  // Fields and button are now direct children of the grid
+  mat-form-field {
+    width: 100%; // Replaces w-100
+    margin-bottom: 0; // Ensures it respects the parent grid's gap
+  }
+
+  // Submit button styling (replaces d-grid)
+  .submit-button {
+    width: 100%;
+    // The grid item itself behaves like d-grid, but we ensure the button fills its cell
+  }
+}
+
+// 4. Remember/Forgot Link Layout (Replacing d-flex align-items-center justify-content-between)
+.remember-forgot-links {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+// 5. Post-form content spacing
+.signup-link, .login-separator {
+  margin-top: $spacing-3; // Separates it from the form/previous element
+  text-align: center;
+}
+
+// 6. Social Login (Replacing d-flex, gap-3)
+.social-login {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-3; // Replaces gap-3
+  margin-top: $spacing-3;
+}
+
+// Existing non-Bootstrap styles
+
+//.login-separator {
+//  span {
+//    position: relative;
+//    top: 16px;
+//    margin-top: -10px;
+//    background-color: #fff;
+//    padding: 5px;
+//    font-size: 13px;
+//    color: #949494;
+//    z-index: 1;
+//  }
+//}
+
+.login-separator {
+  text-align: center;
+  margin-bottom: 20px;
+
+  span {
+    position: relative;
+    top: 15px;
+    margin-top: -10px;
+    background-color: var(--mat-sys-surface-container-low, white);
+    padding: 5px;
+    font-size: 13px;
+    color: #949494;
+    z-index: 1;
+  }
+}
+
+/* responsive */
+
+@media only screen and (max-width: 991px) {
+  .auth-main-content {
+    height: 100%;
+    align-items: flex-start;
+  }
+}

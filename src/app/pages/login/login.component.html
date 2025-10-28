@@ -1,1 +1,44 @@
-<p>login works!</p>
+<main class="login-bg"
+      style="background-image: url(assets/images/login-bg.png);">
+  <div class="auth-box">
+    <mat-card class="card">
+      <mat-card-content>
+        @if (!showFullForm()) {
+          <app-email-prompt (emailPromptSubmit)="emailFormSubmit($event)"
+                            [emailSent]="emailSent"
+                            (showFullFormChange)="showFullForm.set($event)"
+                            (resetState)="resetState()">
+          </app-email-prompt>
+        } @else {
+          <app-full-login-form
+            [loading]="loading()"
+            [hidePassword]="hide()"
+            (passwordToggle)="hide.set(!hide())"
+            (formSubmit)="loginWithGoogle()"
+            (backToPrompt)="showFullForm.set(false)">
+          </app-full-login-form>
+        }
+
+        <div class="login-separator">
+          <span>OR SIGN IN WITH</span>
+          <hr>
+        </div>
+
+        <div class="social-login">
+          <button mat-mini-fab class="bg-facebook">
+            <mat-icon><i class='bxl  bx-facebook'></i></mat-icon>
+          </button>
+          <button mat-mini-fab class="bg-twitter">
+            <mat-icon><i class='bxl bx-twitter'></i></mat-icon>
+          </button>
+          <button mat-mini-fab class="bg-linkedin">
+            <mat-icon><i class='bxl bx-linkedin-square'></i></mat-icon>
+          </button>
+          <button mat-mini-fab class="bg-google">
+            <mat-icon (click)="loginWithGoogle()"><i class='bxl bx-google'></i></mat-icon>
+          </button>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</main>

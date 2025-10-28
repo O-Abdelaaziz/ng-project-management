@@ -1,5 +1,6 @@
-import {Component} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {RouterOutlet} from '@angular/router';
+import {ThemeService} from './core/services/theme.service';
 
 @Component({
   selector: 'app-root',
@@ -15,5 +16,6 @@ export class AppComponent {
 
   constructor() {
     console.log(this.firebaseApiKey)
+    inject(ThemeService).setupDeviceThemeListener()
   }
 }
