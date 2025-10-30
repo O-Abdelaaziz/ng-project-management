@@ -38,6 +38,19 @@ export const routes: Routes = [
     },
     children: [
       {
+        path: 'dashboard',
+        title: `Dashboard - ${APP_NAME}`,
+        loadComponent: () => import('./pages/dashboard/dashboard.component').then((m) => m.DashboardComponent),
+        data: {
+          breadcrumb: 'Dashboard',
+          title: `Dashboard - ${APP_NAME}`,
+          description: 'A project management application dashboard page',
+          keywords: ['dashboard', 'dashboard page', 'ng-project-management', 'project management', 'angular'],
+          canonicalPath: '/dashboard',
+          schema: 'webpage'
+        }
+      },
+      {
         path: 'projects',
         title: `Projects - ${APP_NAME}`,
         loadComponent: () => import('./pages/projects/projects.component').then((m) => m.ProjectsComponent),

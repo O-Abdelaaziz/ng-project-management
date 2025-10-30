@@ -1,0 +1,184 @@
+<h2 class="title" mat-dialog-title>{{ _title }}</h2>
+<mat-divider></mat-divider>
+<mat-dialog-content>
+  <form [formGroup]="projectForm" class="form">
+    <mat-form-field appearance="outline">
+      <mat-label>Project Title</mat-label>
+      <input
+        matInput
+        formControlName="title"
+        placeholder="Enter project title"
+        maxlength="100"
+        minlength="3"
+        #title
+      >
+      <mat-hint align="end">Max length is  {{ title.value.length }}/100</mat-hint>
+      @if (projectForm.controls.title.hasError('required')) {
+        <mat-error>Title is required</mat-error>
+      }
+      @if (projectForm.controls.title.hasError('minlength')) {
+        <mat-error>Title must be at least 3 characters long</mat-error>
+      }
+      @if (projectForm.controls.title.hasError('maxlength')) {
+        <mat-error>Title must be at most 100 characters long</mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Project Description</mat-label>
+      <textarea
+        matInput
+        cols="30"
+        rows="5"
+        formControlName="description"
+        placeholder="Enter project description"
+        maxlength="500"
+        minlength="10"
+        #description
+      ></textarea>
+      <mat-hint align="end">Max length is  {{ description.value.length }}/500</mat-hint>
+      @if (projectForm.controls.description.hasError('required')) {
+        <mat-error>Description is required</mat-error>
+      }
+      @if (projectForm.controls.description.hasError('minlength')) {
+        <mat-error>Description must be at least 10 characters long</mat-error>
+      }
+      @if (projectForm.controls.description.hasError('maxlength')) {
+        <mat-error>Description must be at most 500 characters long</mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Project Start Date</mat-label>
+      <input
+        matInput
+        [matDatepicker]="startDatePicker"
+        formControlName="startDate"
+        placeholder="Enter project start date"
+        #startDate
+      >
+      <mat-datepicker-toggle matIconSuffix [for]="startDatePicker"></mat-datepicker-toggle>
+      <mat-datepicker #startDatePicker></mat-datepicker>
+      @if (projectForm.controls.startDate.hasError('required')) {
+        <mat-error>Start date is required</mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Project End Date</mat-label>
+      <input
+        matInput
+        [matDatepicker]="endDatePicker"
+        formControlName="endDate"
+        placeholder="Enter project end date"
+        #endDate
+      >
+      <mat-datepicker-toggle matIconSuffix [for]="endDatePicker"></mat-datepicker-toggle>
+      <mat-datepicker #endDatePicker></mat-datepicker>
+      @if (projectForm.controls.endDate.hasError('required')) {
+        <mat-error>End date is required</mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Project Status</mat-label>
+      <mat-select formControlName="status" placeholder="Select status" #statuses>
+        <mat-option *ngFor="let status of status" [value]="status.value">
+          {{ status.viewValue }}
+        </mat-option>
+      </mat-select>
+      @if (projectForm.controls.status.hasError('required')) {
+        <mat-error>Status is required</mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Project Priority</mat-label>
+      <mat-select formControlName="priority" placeholder="Select priority" #priorities>
+        <mat-option *ngFor="let priority of priority" [value]="priority.value">
+          {{ priority.viewValue }}
+        </mat-option>
+      </mat-select>
+      @if (projectForm.controls.priority.hasError('required')) {
+        <mat-error>Priority is required</mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Project Budget</mat-label>
+      <input
+        matInput
+        formControlName="budget"
+        placeholder="Enter project budget"
+        #budget
+      >
+      @if (projectForm.controls.budget.hasError('required')) {
+        <mat-error>Budget is required</mat-error>
+      }
+    </mat-form-field>
+
+    <mat-divider></mat-divider>
+
+    <!--    <mat-form-field appearance="outline">-->
+    <!--      <mat-label>Project Contributors</mat-label>-->
+    <!--      <mat-select formControlName="contributors" multiple>-->
+    <!--        <mat-option *ngFor="let contributor of contributors" [value]="contributor">-->
+    <!--          {{ contributor }}-->
+    <!--        </mat-option>-->
+    <!--      </mat-select>-->
+    <!--    </mat-form-field>-->
+    <div formArrayName="contributors">
+      <h4>Contributors</h4>
+      @let contributorControls = projectForm.controls.contributors.controls ;
+      @for (contributorControl of contributorControls; track $index) {
+        <div class="contributor-form">
+          <mat-form-field appearance="outline">
+            <!--           <mat-label>Contributor {{ $index + 1 }}</mat-label>-->
+            <mat-label>Email</mat-label>
+            <input
+              type="email"
+              matInput
+              placeholder="Enter contributor email"
+              formControlName="{{ $index }}">
+            @if (contributorControl.hasError('required')) {
+              <mat-error>Contributor email is required</mat-error>
+            }
+            @if (contributorControl.hasError('email')) {
+              <mat-error>Contributor email is invalid</mat-error>
+            }
+          </mat-form-field>
+          @if ($index) {
+            <button mat-icon-button
+                    matSuffix
+                    class="delete-button"
+                    (click)="removeContributor($index)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          }
+        </div>
+      }
+      @if (contributorControls.length < 5) {
+        <div class="float-end">
+          <button mat-icon-button
+                  matSuffix
+                  class="delete-button"
+                  (click)="addContributor()">
+            <!--            <span>+ Contributor</span>-->
+            <mat-icon>add</mat-icon>
+          </button>
+        </div>
+      }
+    </div>
+
+    <!--    <div class="form-button">-->
+    <!--      <button mat-flat-button color="primary" [disabled]="projectForm.invalid" (click)="onSubmit()">{{ _buttonLabel }}-->
+    <!--      </button>-->
+    <!--      <button mat-flat-button color="warn" (click)="onCancel()">Cancel</button>-->
+    <!--    </div>-->
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+  @let user = user$ | async ;
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-flat-button [disabled]="projectForm.invalid" (click)="onSubmit(user)">{{ _buttonLabel }}</button>
+</mat-dialog-actions>

@@ -1,4 +1,4 @@
-import {ApplicationConfig, provideZoneChangeDetection} from '@angular/core';
+import {ApplicationConfig, importProvidersFrom, provideZoneChangeDetection} from '@angular/core';
 import {
   PreloadAllModules,
   provideRouter,
@@ -12,6 +12,7 @@ import {provideAnimationsAsync} from '@angular/platform-browser/animations/async
 import {initializeApp, provideFirebaseApp} from '@angular/fire/app';
 import {getAuth, provideAuth} from '@angular/fire/auth';
 import {getFirestore, provideFirestore} from '@angular/fire/firestore';
+import {MatNativeDateModule} from '@angular/material/core';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -22,6 +23,7 @@ export const appConfig: ApplicationConfig = {
       withViewTransitions(),
       withComponentInputBinding()
       ),
+    importProvidersFrom(MatNativeDateModule),
     provideAnimationsAsync(),
     provideFirebaseApp(() =>
       initializeApp({

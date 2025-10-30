@@ -1,0 +1,50 @@
+@use "@angular/material" as mat;
+
+.form {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  overflow: hidden;
+
+  mat-form-field {
+    width: 100%;
+  }
+
+  .form-button {
+    display: flex;
+    //justify-content: space-between;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .contributor-form {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    //margin-bottom: 1rem;
+
+    & > mat-form-field {
+      flex: 2;
+      min-width: 0;
+      margin-bottom: 0.5rem;
+    }
+
+    .delete-button {
+      margin-top: -15px;
+
+      @include mat.icon-button-overrides((
+        //icon-color: #fe7968,
+        icon-color: var(--mat-sys-error, rgba(0, 0, 0, 0.54)),
+      ));
+    }
+  }
+
+  .float-end {
+    //float: right;
+    display: flex;
+    justify-content: flex-end;
+  }
+}

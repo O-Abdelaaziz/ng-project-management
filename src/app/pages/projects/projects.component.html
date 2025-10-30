@@ -1,1 +1,12 @@
 <app-page-header></app-page-header>
+<div class="add-project-button">
+  <button
+    mat-flat-button
+    color="primary"
+    class="mat-button"
+    (click)="openProjectForm()">
+    <span>New Project</span>
+    <mat-icon>add</mat-icon>
+  </button>
+</div>
+<app-project-list></app-project-list>

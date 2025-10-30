@@ -1,4 +1,3 @@
-
 @forward 'assets/scss/abstracts/variables';
 @forward 'assets/scss/abstracts/functions';
 @forward 'assets/scss/abstracts/mixins';
@@ -12,8 +11,10 @@
 @use '@angular/material' as mat;
 
 @use 'assets/scss/theme/tokens';
-@use 'assets/scss/theme/light-theme' as app-theme; // Default theme
-@use 'assets/scss/theme/dark-theme'; // dark theme
+@use 'assets/scss/theme/light-theme' as app-theme;
+// Default theme
+@use 'assets/scss/theme/dark-theme';
+// dark theme
 
 // 4. Components (Standalone UI elements)
 @use 'assets/scss/components/button';
@@ -25,3 +26,14 @@
 @use 'assets/scss/utilities/responsive';
 @use 'assets/scss/theme/overrides';
 @use 'assets/scss/theme/theme-application';
+
+
+@include mat.dialog-overrides((
+  container-shape: 10px,
+  subhead-font:var(--mat-sys-headline-small-font)
+));
+
+
+.mat-mdc-dialog-surface {
+  overflow-y: unset !important;
+}

@@ -15,7 +15,7 @@ body {
   background-color: var(--mat-sys-surface);
 
   ::-webkit-scrollbar {
-    width: 10px;
+    width: 5px;
   }
 
   ::-webkit-scrollbar-track {
@@ -23,7 +23,7 @@ body {
   }
 
   ::-webkit-scrollbar-thumb {
-    background-color: var(--mat-sys-on-surface);
-    border-radius: 8px;
+    background-color: var(--mat-sys-primary);
+    border-radius: 0;
   }
 }

@@ -1,0 +1,19 @@
+@use "@angular/material" as mat;
+
+.add-project-button {
+  display: flex;
+  justify-content: flex-end;
+
+  .mat-button {
+    transition: all 0.2s ease-in-out;
+
+    @include mat.button-overrides((
+      filled-container-shape: 10px
+    ));
+
+    &:hover {
+      transform: translateY(-2px);
+    }
+  }
+}
+
